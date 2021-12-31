@@ -1,0 +1,106 @@
+conky.config={
+    xinerama_head = 2,
+	background = false,
+	update_interval = 1,
+	cpu_avg_samples = 2,
+	net_avg_samples = 2,
+	override_utf8_locale = true,
+	double_buffer = true,
+	no_buffers = true,
+	text_buffer_size = 2048,
+	draw_graph_borders = true,
+	temperature_unit = 'celsius',
+    own_window_argb_visual = true, 
+	own_window_argb_value = 0,
+    own_window_class = 'override',
+	own_window = true,
+	own_window_type = 'desktop',
+	own_window_transparent = true,
+	own_window_hints = 'sticky,skip_taskbar,skip_pager,below',
+	border_inner_margin = 0,
+	border_outer_margin = 0,
+	minimum_width = 520, 
+    minimum_height = 600,
+	maximum_width = 520,
+	alignment = 'top_right',
+	gap_x = 20,
+	gap_y = 20,
+	draw_shades = false,
+	draw_outline = false,
+	draw_borders = false,
+	default_shade_color = 'red',
+	default_outline_color = 'green',
+	use_xft = true,
+	override_utf8_locale = true,
+    --font = 'Play:normal:size=8',
+	xftalpha = 0.9,
+	uppercase = false,
+	font='monospace:pixelsize=11',
+	color1 ='cyan',
+	color2= '#DC143C',
+};
+
+conky.text=[[
+#leet chars: ┤┤└└┴┴┐┐││┘┘┌┌├├┬┬┼┼┴┴── ││ ▽▼△▲▵▴▾▿
+${alignr}${offset -25}${font DejaVu Sans:pixelsize=15}${execi 3600 awk -F '=' '/PRETTY_NAME/ { print $2 }' /etc/os-release | tr -d '"'}
+${alignr}$font${offset 7}└─────────────┐   
+${alignr}$font │  
+${alignr}$font ${nodename} ─┤  
+${alignr}${offset 14}$font ${color1}${color1}[${color}${color} ${exec uname -r | cut -c 1-14} ${color1}]${color} kernel ─┤    │  
+${alignr}$font ${color1}[${color} $machine ${color1}]${color}   arch ─┤    │  
+${alignr}$font ${color1}[${color} $uptime ${color1}]${color} uptime ─┘    │  
+#${alignr}$font ${color1}[${color} ${battery BAT0} ${color1}]${color} battery ─┘    │  
+${alignr}$font │  
+${alignr}$font system ─┤  
+${alignr}$font cpu ─┤    │  
+${alignr}${offset 14}$font ${color1}[${color} ${freq_g 1}Ghz ${color1}]${color} ${color2}[${cpu 1}%]${color} cpu1 ─┤    │    │
+${alignr}${offset 14}$font ${color1}[${color} ${freq_g 2}Ghz ${color1}]${color} ${color2}[${cpu 2}%]${color} cpu2 ─┤    │    │
+${alignr}${offset 14}$font ${color1}[${color} ${freq_g 3}Ghz ${color1}]${color} ${color2}[${cpu 3}%]${color} cpu3 ─┤    │    │
+${alignr}${offset 14}$font ${color1}[${color} ${freq_g 4}Ghz ${color1}]${color} ${color2}[${cpu 4}%]${color} cpu4 ─┘    │    │
+${alignr}${offset -14}│    │
+${alignr}$font processes ─┤    │  
+${alignr}$font ${color2}[${color} ${top name 1}  ${top cpu 1} ${color2}]${color} ─┤    │    │  
+${alignr}$font ${color2}[${color} ${top name 2}  ${top cpu 2} ${color2}]${color} ─┤    │    │  
+${alignr}$font ${color2}[${color} ${top name 3}  ${top cpu 3} ${color2}]${color} ─┤    │    │  
+${alignr}$font ${color2}[${color} ${top name 4}  ${top cpu 4} ${color2}]${color} ─┤    │    │  
+${alignr}$font ${color2}[${color} ${top name 5}  ${top cpu 5} ${color2}]${color} ─┤    │    │  
+${alignr}$font ${color1}[${color} $processes ${color1}]${color}   total ─┤    │    │  
+${alignr}$font ${color1}[${color} $running_processes ${color1}]${color} running ─┘    │    │  
+${alignr}${offset -14}│    │
+${alignr}$font temperature ─┘    │  
+${alignr}$font ${color1}[${color} ${exec sensors | grep -m 1 'Core 0' | cut -c 17-23} ${color1}]${color} core 1 ─┤         │  
+${alignr}$font ${color1}[${color} ${exec sensors | grep -m 1 'Core 1' | cut -c 17-23} ${color1}]${color} core 2 ─┤         │  
+${alignr}$font ${color1}[${color} ${exec sensors | grep -m 1 'Core 2' | cut -c 17-23} ${color1}]${color} core 3 ─┤         │  
+${alignr}$font ${color1}[${color} ${exec sensors | grep -m 1 'Core 3' | cut -c 17-23} ${color1}]${color} core 4 ─┘         │  
+${alignr}$font │  
+${alignr}$font resources ─┤  
+${alignr}$font ram ─┤    │  
+${alignr}$font ${color1}[${color} $memperc% ${color1}]${color} used ─┤    │    │  
+${alignr}$font ${color1}[${color} $mem/$memmax ${color1}]${color} ─┘    │    │    │  
+${alignr}$font ${color2}[${color} ${top_mem name 1}  ${top_mem mem 1} ${color2}]${color} ─┤    │    │  
+${alignr}$font ${color2}[${color} ${top_mem name 2}  ${top_mem mem 2} ${color2}]${color} ─┤    │    │  
+${alignr}$font ${color2}[${color} ${top_mem name 3}  ${top_mem mem 3} ${color2}]${color} ─┤    │    │  
+${alignr}$font ${color2}[${color} ${top_mem name 4}  ${top_mem mem 4} ${color2}]${color} ─┤    │    │  
+${alignr}$font ${color2}[${color} ${top_mem name 5}  ${top_mem mem 5} ${color2}]${color} ─┘    │    │  
+${alignr}${offset -14}│    │
+${alignr}$font storage ─┘    │  
+${alignr}$font ${color1}[${color} $diskio_read ${color1}]${color}  read ─┤          │  
+${alignr}$font ${color1}[${color} $diskio_write ${color1}]${color} write ─┤          │  
+${alignr}$font ${color1}[${color} $swapperc% - $swap/$swapmax ${color1}]${color} swap ─┤          │  
+${alignr}${offset 7}$font ${color1}[${color} ${swapbar 5,120} ${color1}]${color} ─┤          │   
+${alignr}$font ${color1}[${color} ${fs_used /}/${fs_size /} ${color1}]${color} root ─┤          │  
+${alignr}${offset 21}$font ${color1}[${color} ${fs_bar 5,120 /} ${color1}]${color} ─┤          │  
+${alignr}$font ${color1}[${color} ${fs_used /media/hamekas/33E1F3A93AD10351}/${fs_size /media/hamekas/33E1F3A93AD10351} ${color1}]${color} HDD ─┤          │  
+${alignr}${offset 21}$font ${color1}[${color} ${fs_bar 5,120 /media/hamekas/33E1F3A93AD10351} ${color1}]${color} ─┘          │  
+#${alignr}$font ${color1}[${color} ${fs_used /usr/local}/${fs_size /usr/local} ${color1}]${color} local -─┘    │  
+#${alignr}$font ${color1}[${color} ${fs_bar 5,120 /home/Container/} ${color1}]${color} -─┘         │  
+${alignr}$font │  
+${alignr}$font net ─┘  
+${alignr}${offset 10}$font ${color1}[${color} ${tcp_portmon 1 65535 count} ${color1}]${color} connections ─┤       
+${alignr}${offset 10}$font ${color1}[${color} ${tcp_portmon 1 32767 count} ${color1}]${color} in / locale ─┤       
+${alignr}${offset 10}$font ${color1}[${color} ${tcp_portmon 32768 61000 count} ${color1}]${color} out / remote ─┤       
+${alignr}${offset 10}$font ${color1}[${color} ${upspeed wlp3s0} k/s ${color1}]${color}   up ─┤       
+${alignr}${offset 17}$font ${color1}${color} ${upspeedgraph wlp3s0 8,120 DC143C DC143C -l} ${color1}${color} ─┘    │       
+${alignr}${offset 10}$font ${color1}[${color} ${downspeed wlp3s0} k/s ${color1}]${color} down ─┘       
+${alignr}${offset 15}$font ${color1}${color} ${downspeedgraph wlp3s0 8,120 DC143C DC143C -l} ${color1}${color} ─┘            
+]]
