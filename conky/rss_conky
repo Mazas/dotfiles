@@ -19,11 +19,11 @@ conky.config={
 	own_window_hints = 'sticky,skip_taskbar,skip_pager,below',
 	border_inner_margin = 0,
 	border_outer_margin = 0,
-	minimum_width = 520, 
+	minimum_width = 680, 
     minimum_height = 600,
-	maximum_width = 520,
+	maximum_width = 680,
 	alignment = 'top_right',
-	gap_x = 1365,
+	gap_x = 1205,
 	gap_y = 20,
 	draw_shades = false,
 	draw_outline = false,
@@ -45,19 +45,5 @@ conky.text=[[
 ┌────────────────────────────┐
 │ Hacker News: Front Page /. │
 ├────────────────────────────┘
-├─ 1 ${execi 3600 /home/hamekas/conky/hamekas/rss.sh 1 2}
-├─ 2 ${execi 3600 /home/hamekas/conky/hamekas/rss.sh 1 3}
-├─ 3 ${execi 3600 /home/hamekas/conky/hamekas/rss.sh 1 4}
-├─ 4 ${execi 3600 /home/hamekas/conky/hamekas/rss.sh 1 5}
-├─ 5 ${execi 3600 /home/hamekas/conky/hamekas/rss.sh 1 6}
-├─ 6 ${execi 3600 /home/hamekas/conky/hamekas/rss.sh 1 7}
-├─ 7 ${execi 3600 /home/hamekas/conky/hamekas/rss.sh 1 8}
-├─ 8 ${execi 3600 /home/hamekas/conky/hamekas/rss.sh 1 9}
-├─ 9 ${execi 3600 /home/hamekas/conky/hamekas/rss.sh 1 10}
-├─ 10 ${execi 3600 /home/hamekas/conky/hamekas/rss.sh 1 11}
-├─ 11 ${execi 3600 /home/hamekas/conky/hamekas/rss.sh 1 12}
-├─ 12 ${execi 3600 /home/hamekas/conky/hamekas/rss.sh 1 13}
-├─ 13 ${execi 3600 /home/hamekas/conky/hamekas/rss.sh 1 14}
-├─ 14 ${execi 3600 /home/hamekas/conky/hamekas/rss.sh 1 15}
-└─ 15 ${execi 3600 /home/hamekas/conky/hamekas/rss.sh 1 16}
+${execi 3600 python /home/hamekas/conky/hamekas/rss.py}
 ]];
