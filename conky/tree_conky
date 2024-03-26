@@ -49,7 +49,10 @@ ${alignr}$font ${nodename} ─┤
 ${alignr}${offset 14}$font ${color1}${color1}[${color}${color} ${exec uname -r | cut -c 1-14} ${color1}]${color} kernel ─┤    │  
 ${alignr}$font ${color1}[${color} $machine ${color1}]${color}   arch ─┤    │  
 ${alignr}$font ${color1}[${color} $uptime ${color1}]${color} uptime ─┘    │  
-#${alignr}$font ${color1}[${color} ${battery BAT0} ${color1}]${color} battery ─┘    │  
+${alignr}$font │  
+${alignr}$font datetime ─┤  
+${alignr}$font ${color1}[${color} ${time %H:%M} ${color1}]${color} time ─┤    │  
+${alignr}$font ${color1}[${color} ${time %d %m %Y} ${color1}]${color} date ─┘    │  
 ${alignr}$font │  
 ${alignr}$font system ─┤  
 ${alignr}$font cpu ─┤    │  
@@ -68,10 +71,9 @@ ${alignr}$font ${color1}[${color} $processes ${color1}]${color}   total ─┤  
 ${alignr}$font ${color1}[${color} $running_processes ${color1}]${color} running ─┘    │    │  
 ${alignr}${offset -14}│    │
 ${alignr}$font temperature ─┘    │  
-${alignr}$font ${color1}[${color} ${exec sensors | grep -m 1 'Core 0' | cut -c 17-23} ${color1}]${color} core 1 ─┤         │  
-${alignr}$font ${color1}[${color} ${exec sensors | grep -m 1 'Core 1' | cut -c 17-23} ${color1}]${color} core 2 ─┤         │  
-${alignr}$font ${color1}[${color} ${exec sensors | grep -m 1 'Core 2' | cut -c 17-23} ${color1}]${color} core 3 ─┤         │  
-${alignr}$font ${color1}[${color} ${exec sensors | grep -m 1 'Core 3' | cut -c 17-23} ${color1}]${color} core 4 ─┘         │  
+${alignr}$font ${color1}[${color} ${exec sensors | grep -m 1 'Composite' | cut -c 15-23} ${color1}]${color} CPU ─┤         │  
+${alignr}$font ${color1}[${color} ${exec sensors | grep -m 1 'mem' | cut -c 15-23} ${color1}]${color} RAM ─┤         │  
+${alignr}$font ${color1}[${color} ${exec sensors | grep -m 1 'junction' | cut -c 15-23} ${color1}]${color} GPU ─┘         │  
 ${alignr}$font │  
 ${alignr}$font resources ─┤  
 ${alignr}$font ram ─┤    │  
@@ -84,23 +86,23 @@ ${alignr}$font ${color2}[${color} ${top_mem name 4}  ${top_mem mem 4} ${color2}]
 ${alignr}$font ${color2}[${color} ${top_mem name 5}  ${top_mem mem 5} ${color2}]${color} ─┘    │    │  
 ${alignr}${offset -14}│    │
 ${alignr}$font storage ─┘    │  
-${alignr}$font ${color1}[${color} $diskio_read ${color1}]${color}  read ─┤          │  
-${alignr}$font ${color1}[${color} $diskio_write ${color1}]${color} write ─┤          │  
-${alignr}$font ${color1}[${color} $swapperc% - $swap/$swapmax ${color1}]${color} swap ─┤          │  
-${alignr}${offset 7}$font ${color1}[${color} ${swapbar 5,120} ${color1}]${color} ─┤          │   
-${alignr}$font ${color1}[${color} ${fs_used /}/${fs_size /} ${color1}]${color} root ─┤          │  
-${alignr}${offset 21}$font ${color1}[${color} ${fs_bar 5,120 /} ${color1}]${color} ─┤          │  
-${alignr}$font ${color1}[${color} ${fs_used /media/hamekas/33E1F3A93AD10351}/${fs_size /media/hamekas/33E1F3A93AD10351} ${color1}]${color} HDD ─┤          │  
-${alignr}${offset 21}$font ${color1}[${color} ${fs_bar 5,120 /media/hamekas/33E1F3A93AD10351} ${color1}]${color} ─┘          │  
-#${alignr}$font ${color1}[${color} ${fs_used /usr/local}/${fs_size /usr/local} ${color1}]${color} local -─┘    │  
-#${alignr}$font ${color1}[${color} ${fs_bar 5,120 /home/Container/} ${color1}]${color} -─┘         │  
+${alignr}$font ${color1}[${color} $diskio_read ${color1}]${color}  read ─┤         │  
+${alignr}$font ${color1}[${color} $diskio_write ${color1}]${color} write ─┤         │  
+${alignr}$font ${color1}[${color} $swapperc% - $swap/$swapmax ${color1}]${color} swap ─┤         │  
+${alignr}${offset 7}$font ${color1}[${color} ${swapbar 5,120} ${color1}]${color} ─┘    │         │
+${alignr}$font ${color1}[${color} ${fs_used /}/${fs_size /} ${color1}]${color} root ─┤         │  
+${alignr}${offset 21}$font ${color1}[${color} ${fs_bar 5,120 /} ${color1}]${color} ─┘    │         │  
+${alignr}$font ${color1}[${color} ${fs_used //mnt/HDD}/${fs_size /mnt/HDD} ${color1}]${color} HDD ─┤         │  
+${alignr}${offset 21}$font ${color1}[${color} ${fs_bar 5,120 /mnt/HDD} ${color1}]${color} ─┘    │         │  
+${alignr}$font ${color1}[${color} ${fs_used /mnt/SSD}/${fs_size /mnt/SSD} ${color1}]${color} local ─┘         │  
+${alignr}${offset 21}$font ${color1}[${color} ${fs_bar 5,120 /mnt/SSD} ${color1}]${color} ─┘              │  
 ${alignr}$font │  
 ${alignr}$font net ─┘  
-${alignr}${offset 10}$font ${color1}[${color} ${tcp_portmon 1 65535 count} ${color1}]${color} connections ─┤       
-${alignr}${offset 10}$font ${color1}[${color} ${tcp_portmon 1 32767 count} ${color1}]${color} in / locale ─┤       
-${alignr}${offset 10}$font ${color1}[${color} ${tcp_portmon 32768 61000 count} ${color1}]${color} out / remote ─┤       
-${alignr}${offset 10}$font ${color1}[${color} ${upspeed wlp3s0} k/s ${color1}]${color}   up ─┤       
-${alignr}${offset 17}$font ${color1}${color} ${upspeedgraph wlp3s0 8,120 DC143C DC143C -l} ${color1}${color} ─┘    │       
-${alignr}${offset 10}$font ${color1}[${color} ${downspeed wlp3s0} k/s ${color1}]${color} down ─┘       
-${alignr}${offset 15}$font ${color1}${color} ${downspeedgraph wlp3s0 8,120 DC143C DC143C -l} ${color1}${color} ─┘            
+${alignr}${offset 10}$font ${color1}[${color} ${tcp_portmon 1 65535 count} ${color1}]${color} connections ─┤    
+${alignr}${offset 10}$font ${color1}[${color} ${tcp_portmon 1 32767 count} ${color1}]${color} in / locale ─┤    
+${alignr}${offset 10}$font ${color1}[${color} ${tcp_portmon 32768 61000 count} ${color1}]${color} out / remote ─┤    
+${alignr}${offset 10}$font ${color1}[${color} ${upspeed wlp5s0} k/s ${color1}]${color}   up ─┤    
+${alignr}${offset 17}$font ${color1}${color} ${upspeedgraph wlp5s0 8,120 DC143C DC143C -l} ${color1}${color} ─┘   │    
+${alignr}${offset 10}$font ${color1}[${color} ${downspeed wlp5s0} k/s ${color1}]${color} down ─┘    
+${alignr}${offset 15}$font ${color1}${color} ${downspeedgraph wlp5s0 8,120 DC143C DC143C -l} ${color1}${color} ─┘        
 ]]
