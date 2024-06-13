@@ -45,5 +45,5 @@ conky.text=[[
 ┌────────────────────────────┐
 │ Hacker News: Front Page /. │
 ├────────────────────────────┘
-${execi 3600 python /home/hamekas/conky/dotfiles/conky/rss.py}
+${execi 3600 python ~/.config/conky/rss.py}
 ]];
