@@ -2,10 +2,14 @@ return {
   "folke/tokyonight.nvim",
   lazy = false,
   priority = 1000,
-  opts = {
-    transparent = true,
-  },
   config = function()
-    vim.cmd.colorscheme "tokyonight-night"
-  end
+    require("tokyonight").setup({
+      transparent = true,
+      styles = {
+        functions = { italic = false },
+        keywords = { italic = false },
+      },
+    })
+    vim.cmd.colorscheme("tokyonight-night")
+  end,
 }
