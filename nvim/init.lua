@@ -14,3 +14,7 @@ vim.opt.rtp:prepend(lazypath)
 local opts = {}
 require("vim-options")
 require("lazy").setup("plugins", opts)
+
+if vim.lsp.inlay_hint then
+  vim.lsp.inlay_hint.enable(true, { 0 })
+end
