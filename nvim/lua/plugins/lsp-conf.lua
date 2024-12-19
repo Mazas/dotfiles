@@ -1,3 +1,4 @@
+
 return {
   {
     'VonHeikemen/lsp-zero.nvim',
@@ -29,6 +30,7 @@ return {
           ['<C-Space>'] = cmp.mapping.complete(),
           ['<C-u>'] = cmp.mapping.scroll_docs(-4),
           ['<C-d>'] = cmp.mapping.scroll_docs(4),
+          ['<C-e>'] = cmp.mapping.confirm({ select = false })
         }),
         snippet = {
           expand = function(args)
@@ -70,7 +72,7 @@ return {
         -- vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
         vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
         vim.keymap.set({ 'n', 'x' }, '<leader>f', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
-        vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
+        vim.keymap.set({ 'n', 'x' }, '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
       end
 
       lsp_zero.extend_lspconfig({
@@ -90,3 +92,4 @@ return {
     end
   }
 }
+
